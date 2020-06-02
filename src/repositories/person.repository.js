@@ -31,7 +31,7 @@ module.exports = class PersonRepository {
    * @param {int} page: indica el numero de pagina, por defecto es 1
    * @param {int} limit: indica la cantidad de registros por pagina, por defecto es 10
    */
-  filter = async (filter, page = 1, limit = 10) => {
+  async filter(filter, page = 1, limit = 10) {
     const filterPerson = await PersonModel.find(filter)
       .limit(limit * 1)
       .skip((page - 1) * limit)

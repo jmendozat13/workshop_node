@@ -37,7 +37,7 @@ module.exports = class PersonController {
     ctx.body = person
   }
 
-  filter = async (ctx) => {
+  async filter(ctx) {
     try {
       const header = ctx.request.header
       const filter = ctx.request.body
