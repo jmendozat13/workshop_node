@@ -24,4 +24,19 @@ module.exports = class PersonRepository {
     const options = { upsert: upsert }
     await PersonModel.updateOne(filter, person, options)
   }
+
+  /**
+   *
+   * @param {object} filter: puede contener una o mas propiedades del documento en MongoDB por el cual se desea buscar
+   * @param {int} page: indica el numero de pagina, por defecto es 1
+   * @param {int} limit: indica la cantidad de registros por pagina, por defecto es 10
+   */
+  filter = async (filter, page = 1, limit = 10) => {
+    const filterPerson = await PersonModel.find(filter)
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec()
+    const countPerson = await PersonModel.count()
+    return { filterPerson, totalPages: Math.ceil(countPerson / limit), currentPage: page }
+  }
 }

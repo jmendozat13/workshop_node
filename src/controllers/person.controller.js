@@ -36,4 +36,17 @@ module.exports = class PersonController {
     await repository.save(person, true)
     ctx.body = person
   }
+
+  filter = async (ctx) => {
+    try {
+      const header = ctx.request.header
+      const filter = ctx.request.body
+      const data = await repository.filter(filter, header.page, header.limit)
+      if (data) {
+        ctx.body = data
+      }
+    } catch (err) {
+      ctx.throw(500, 'Error interno controlado de servidor')
+    }
+  }
 }

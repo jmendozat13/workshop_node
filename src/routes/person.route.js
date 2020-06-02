@@ -16,4 +16,7 @@ router.get('person/byIndex', '/:index', controller.getByIndex)
 // POST
 router.post('person/post', '/', controller.save)
 
+// POST
+router.post('person/post', '/filter', controller.filter)
+
 module.exports = router
