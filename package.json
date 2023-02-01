@@ -30,7 +30,7 @@
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.1",
     "koa-router": "^9.0.1",
-    "mongoose": "^5.9.16",
+    "mongoose": "^5.13.15",
     "yenv": "^2.1.1"
   }
 }
